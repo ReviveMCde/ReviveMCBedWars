@@ -10,6 +10,8 @@ import de.revivemc.bedwars.modules.database.DatabaseDriver;
 import de.revivemc.bedwars.modules.gamephase.GamePhase;
 import de.revivemc.bedwars.modules.setup.GameStateBuilder;
 import de.revivemc.core.playerutils.ReviveMCPlayer;
+import eu.thesimplecloud.api.service.ServiceState;
+import eu.thesimplecloud.plugin.startup.CloudPlugin;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -34,6 +36,9 @@ public class BedWars extends JavaPlugin {
         if (!gameStateBuilder.existsFile()) {
             gameStateBuilder.createGameState("2x1");
         }
+        CloudPlugin.getInstance().thisService().setMOTD("Voting...");
+        CloudPlugin.getInstance().thisService().setState(ServiceState.VISIBLE);
+        CloudPlugin.getInstance().thisService().update();
     }
 
 
@@ -70,5 +75,9 @@ public class BedWars extends JavaPlugin {
 
     public DatabaseDriver getDatabaseDriver() {
         return databaseDriver;
+    }
+
+    public GameStateBuilder getGameStateBuilder() {
+        return gameStateBuilder;
     }
 }

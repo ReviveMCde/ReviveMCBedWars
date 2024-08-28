@@ -42,4 +42,15 @@ public class GameStateBuilder {
     public boolean existsFile() {
         return file.exists();
     }
+
+    public int minimumPlayersToStart() {
+        if (getGameState().equalsIgnoreCase("2x1")) {
+            return 2;
+        } else if (getGameState().equalsIgnoreCase("4x1")) {
+            return 2;
+        } else if (getGameState().equalsIgnoreCase("8x1")) {
+            return 4;
+        }
+        return 0;
+    }
 }

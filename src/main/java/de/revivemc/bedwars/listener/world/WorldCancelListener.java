@@ -331,13 +331,6 @@ public class WorldCancelListener implements Listener {
     }
 
     @EventHandler
-    public void onPlayerItemHoldEvent(PlayerItemHeldEvent event) {
-        final Player player = event.getPlayer();
-        player.getInventory().getItem(event.getNewSlot());
-        player.playSound(player.getLocation(), Sound.LAVA_POP, 1, 2);
-    }
-
-    @EventHandler
     public void onPlayerItemDrop(PlayerDropItemEvent event) {
         event.setCancelled(true);
     }

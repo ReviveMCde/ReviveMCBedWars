@@ -4,6 +4,7 @@ import de.revivemc.bedwars.modules.inventory.InventoryModule;
 import de.revivemc.core.playerutils.ReviveMCPlayer;
 import eu.thesimplecloud.api.CloudAPI;
 import eu.thesimplecloud.api.player.ICloudPlayer;
+import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -18,6 +19,7 @@ public class PlayerInteractListener implements Listener {
         final InventoryModule inventoryModule = new InventoryModule(player);
         final ICloudPlayer iCloudPlayer = CloudAPI.getInstance().getCloudPlayerManager().getCachedCloudPlayer(player.getUniqueId());
         final ReviveMCPlayer reviveMCPlayer = new ReviveMCPlayer(player.getUniqueId());
+        assert iCloudPlayer != null;
 
         if (event.getAction() == Action.RIGHT_CLICK_AIR || event.getAction() == Action.RIGHT_CLICK_BLOCK) {
             if (player.getItemInHand() == null) {
@@ -33,6 +35,7 @@ public class PlayerInteractListener implements Listener {
             }
 
             if (player.getItemInHand().getItemMeta().getDisplayName().equalsIgnoreCase("§8» §aTeamauswahl")) {
+                inventoryModule.openTeamInventory();
                 return;
             }
 
@@ -41,7 +44,7 @@ public class PlayerInteractListener implements Listener {
             }
 
             if (player.getItemInHand().getItemMeta().getDisplayName().equalsIgnoreCase("§8» §cSpiel Verlassen")) {
-
+                iCloudPlayer.sendToLobby();
                 return;
             }
         }

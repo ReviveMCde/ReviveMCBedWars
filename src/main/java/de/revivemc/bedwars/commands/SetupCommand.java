@@ -38,6 +38,8 @@ public class SetupCommand implements CommandExecutor {
             player.sendMessage(prefix + "Du hast den Spawnpunkt für die WarteLobby gesetzt.");
 
             return true;
+        } else if (args[0].equalsIgnoreCase("setperksshop")) {
+
         }else if (args[0].equalsIgnoreCase("newmap")) {
             player.sendMessage(prefix + "return");
 
@@ -64,6 +66,7 @@ public class SetupCommand implements CommandExecutor {
         player.sendMessage(prefix + "BedWars - Setup");
         player.sendMessage(prefix + " ");
         player.sendMessage(prefix + "/setup setwaitinglobby §8| §7Setzte den WarteLobby Spawn.");
+        player.sendMessage(prefix + "/setup setperksshop §8| §7Setzte den Perks-Shop Spawn.");
         player.sendMessage(prefix + "/setup newmap §8| §7Richte eine neue Map ein.");
         player.sendMessage(prefix + "/setup configuremap <MapName> §8| §7Konfiguriere eine bestehende Map.");
         player.sendMessage(prefix + " ");
