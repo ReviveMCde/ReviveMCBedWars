@@ -4,3 +4,4 @@ version: 1.0
 main: de.revivemc.bedwars.BedWars
 commands:
   setup:
+  build:

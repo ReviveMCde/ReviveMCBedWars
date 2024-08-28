@@ -1,9 +1,10 @@
 package de.revivemc.bedwars;
 
+import de.revivemc.bedwars.commands.BuildCommand;
 import de.revivemc.bedwars.commands.SetupCommand;
 import de.revivemc.bedwars.listener.entity.EntityDamageListener;
-import de.revivemc.bedwars.listener.player.PlayerInteractListener;
-import de.revivemc.bedwars.listener.player.PlayerJoinListener;
+import de.revivemc.bedwars.listener.entity.EntitySpawnListener;
+import de.revivemc.bedwars.listener.player.*;
 import de.revivemc.bedwars.listener.world.WorldCancelListener;
 import de.revivemc.bedwars.modules.database.DatabaseDriver;
 import de.revivemc.bedwars.modules.gamephase.GamePhase;
@@ -43,6 +44,7 @@ public class BedWars extends JavaPlugin {
 
     public void initCommands() {
         getCommand("setup").setExecutor(new SetupCommand());
+        getCommand("build").setExecutor(new BuildCommand());
     }
 
     public void initListener() {
@@ -50,6 +52,11 @@ public class BedWars extends JavaPlugin {
         Bukkit.getPluginManager().registerEvents(new EntityDamageListener(), this);
         Bukkit.getPluginManager().registerEvents(new PlayerInteractListener(), this);
         Bukkit.getPluginManager().registerEvents(new WorldCancelListener(), this);
+        Bukkit.getPluginManager().registerEvents(new EntitySpawnListener(), this);
+        Bukkit.getPluginManager().registerEvents(new AsyncPlayerChatListener(), this);
+        Bukkit.getPluginManager().registerEvents(new PlayerBlockBreakListener(), this);
+        Bukkit.getPluginManager().registerEvents(new PlayerBlockPlaceListener(), this);
+        Bukkit.getPluginManager().registerEvents(new PlayerQuitListener(), this);
     }
 
 
@@ -61,7 +68,7 @@ public class BedWars extends JavaPlugin {
         return instance;
     }
 
-    public static DatabaseDriver getDatabaseDriver() {
+    public DatabaseDriver getDatabaseDriver() {
         return databaseDriver;
     }
 }
