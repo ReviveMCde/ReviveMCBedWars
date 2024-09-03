@@ -1,10 +1,6 @@
-package de.revivemc.bedwars.modules.setup;
+package de.revivemc.bedwars.modules.setup.builder;
 
-import de.revivemc.bedwars.BedWars;
-import org.bukkit.Location;
-import org.bukkit.World;
 import org.bukkit.configuration.file.YamlConfiguration;
-import org.bukkit.entity.Player;
 
 import java.io.File;
 import java.io.IOException;

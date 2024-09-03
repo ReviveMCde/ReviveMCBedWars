@@ -35,7 +35,7 @@ public class TeamModule {
                 teamHandler.addTeam("Orange", Color.ORANGE, itemHandler.createNewItemCreator(Material.BLAZE_POWDER).toItemStack(), "orange");
                 teamHandler.addTeam("Türkis", Color.AQUA, itemHandler.createNewItemCreator(Material.BLAZE_POWDER).toItemStack(), "aqua");
                 teamHandler.addTeam("Schwarz", Color.BLACK, itemHandler.createNewItemCreator(Material.BLAZE_POWDER).toItemStack(), "black");
-                teamHandler.addTeam("Lila", Color.PURPLE, itemHandler.createNewItemCreator(Material.BLAZE_POWDER).toItemStack(), "purple");
+                teamHandler.addTeam("Pink", Color.FUCHSIA, itemHandler.createNewItemCreator(Material.BLAZE_POWDER).toItemStack(), "fuchsia");
         }
     }
 

@@ -8,15 +8,12 @@ import de.revivemc.bedwars.listener.player.*;
 import de.revivemc.bedwars.listener.world.WorldCancelListener;
 import de.revivemc.bedwars.modules.database.DatabaseDriver;
 import de.revivemc.bedwars.modules.gamephase.GamePhase;
-import de.revivemc.bedwars.modules.setup.GameStateBuilder;
+import de.revivemc.bedwars.modules.setup.builder.GameStateBuilder;
 import de.revivemc.core.playerutils.ReviveMCPlayer;
 import eu.thesimplecloud.api.service.ServiceState;
 import eu.thesimplecloud.plugin.startup.CloudPlugin;
 import org.bukkit.Bukkit;
-import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
-
-import java.io.File;
 
 public class BedWars extends JavaPlugin {
 

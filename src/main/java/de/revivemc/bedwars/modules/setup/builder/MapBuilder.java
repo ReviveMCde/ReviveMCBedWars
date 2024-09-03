@@ -1,4 +1,4 @@
-package de.revivemc.bedwars.modules.setup;
+package de.revivemc.bedwars.modules.setup.builder;
 
 import de.revivemc.bedwars.BedWars;
 import org.bukkit.Location;
@@ -11,14 +11,17 @@ import java.io.IOException;
 
 public class MapBuilder {
 
-    private final File file = new File("plugins//BedWars//locations.yml");
+    private final File file;
     private final YamlConfiguration configuration;
+    private final String mapName;
 
-    public MapBuilder() {
+    public MapBuilder(final String mapName) {
+        this.mapName = mapName;
+        this.file = new File("plugins//BedWars//maps//" + mapName + ".yml");
         this.configuration = YamlConfiguration.loadConfiguration(file);
     }
 
-    public void createSpawnPoint(String mapName, String team, Location location) {
+    public void createSpawnPoint(String team, Location location) {
         try {
             configuration.set(mapName + "." + team + ".X", location.getX());
             configuration.set(mapName + "." + team + ".Y", location.getY());
@@ -32,7 +35,7 @@ public class MapBuilder {
         }
     }
 
-    public void createShopSpawn(String mapName, String team, Location location) {
+    public void createShopSpawn(String team, Location location) {
         try {
             configuration.set(mapName + "." + team + ".Shop.X", location.getX());
             configuration.set(mapName + "." + team + ".Shop.Y", location.getY());
@@ -46,7 +49,7 @@ public class MapBuilder {
         }
     }
 
-    public void createBronzeSpawnLocation(String mapName, String team, Location location) {
+    public void createBronzeSpawnLocation(String team, Location location) {
         try {
             configuration.set(mapName + "." + team + ".BronzeX", location.getX());
             configuration.set(mapName + "." + team + ".BronzeY", location.getY());
@@ -58,7 +61,7 @@ public class MapBuilder {
         }
     }
 
-    public void createIronSpawnLocation(String mapName, String team, Location location) {
+    public void createIronSpawnLocation(String team, Location location) {
         try {
             configuration.set(mapName + "." + team + ".IronX", location.getX());
             configuration.set(mapName + "." + team + ".IronY", location.getY());
@@ -70,7 +73,7 @@ public class MapBuilder {
         }
     }
 
-    public void createGoldSpawnLocation(String mapName, Location location) {
+    public void createGoldSpawnLocation(Location location) {
         try {
             configuration.set(mapName + ".Gold", location.getX());
             configuration.set(mapName + ".Gold", location.getY());
@@ -82,7 +85,7 @@ public class MapBuilder {
         }
     }
 
-    public void createMapDeathLocation(String mapName, Location location) {
+    public void createMapDeathLocation(Location location) {
         try {
             configuration.set(mapName + ".DeathHeight", location.getY());
             configuration.save(file);
@@ -91,7 +94,7 @@ public class MapBuilder {
         }
     }
 
-    public Location getSpawnPoint(String mapName, String team) {
+    public Location getSpawnPoint(String team) {
         double X = configuration.getDouble(mapName + "." + team + ".X");
         double Y = configuration.getDouble(mapName + "." + team + ".Y");
         double Z = configuration.getDouble(mapName + "." + team + ".Z");
@@ -104,7 +107,7 @@ public class MapBuilder {
         return location;
     }
 
-    public Location getShopSpawn(String mapName, String team) {
+    public Location getShopSpawn(String team) {
         double X = configuration.getDouble(mapName + "." + team + ".Shop.X");
         double Y = configuration.getDouble(mapName + "." + team + ".Shop.Y");
         double Z = configuration.getDouble(mapName + "." + team + ".Shop.Z");
@@ -117,7 +120,7 @@ public class MapBuilder {
         return location;
     }
 
-    public Location getBronzeSpawnLocation(String mapName, String team, Player player) {
+    public Location getBronzeSpawnLocation(String team, Player player) {
         Location location = player.getLocation();
         location.setX(configuration.getDouble(mapName + "." + team + ".BronzeX"));
         location.setY(configuration.getDouble(mapName + "." + team + ".BronzeY"));
@@ -125,7 +128,7 @@ public class MapBuilder {
         return location;
     }
 
-    public Location getIronSpawnLocation(String mapName, String team, Player player) {
+    public Location getIronSpawnLocation(String team, Player player) {
         Location location = player.getLocation();
         location.setX(configuration.getDouble(mapName + "." + team + ".IronX"));
         location.setY(configuration.getDouble(mapName + "." + team + ".IronY"));
@@ -133,7 +136,7 @@ public class MapBuilder {
         return location;
     }
 
-    public Location getGoldSpawnLocation(String mapName, Player player) {
+    public Location getGoldSpawnLocation(Player player) {
         Location location = player.getLocation();
         location.setX(configuration.getDouble(mapName + ".Gold"));
         location.setY(configuration.getDouble(mapName + ".Gold"));
@@ -141,7 +144,7 @@ public class MapBuilder {
         return location;
     }
 
-    public Location getMapDeathLocation(String mapName, Player player) {
+    public Location getMapDeathLocation(Player player) {
         Location location = player.getLocation();
         location.setY(configuration.getDouble(mapName + ".DeathHeight"));
         return location;

@@ -4,10 +4,8 @@ import de.revivemc.bedwars.BedWars;
 import de.revivemc.bedwars.modules.gamephase.GamePhase;
 import de.revivemc.bedwars.modules.inventory.InventoryModule;
 import de.revivemc.bedwars.modules.scoreboard.ScoreboardModule;
-import de.revivemc.bedwars.modules.setup.GameStateBuilder;
-import de.revivemc.bedwars.modules.setup.LocationBuilder;
-import de.revivemc.core.ReviveMCAPI;
-import de.revivemc.core.gameutils.countdown.Countdown;
+import de.revivemc.bedwars.modules.setup.builder.GameStateBuilder;
+import de.revivemc.bedwars.modules.setup.builder.LocationBuilder;
 import de.revivemc.core.playerutils.ReviveMCPlayer;
 import de.revivemc.core.playerutils.events.ReviveMCPlayerJoinEvent;
 import eu.thesimplecloud.api.CloudAPI;
@@ -19,8 +17,6 @@ import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.player.PlayerJoinEvent;
-import org.bukkit.material.Bed;
 
 public class PlayerJoinListener implements Listener {
 

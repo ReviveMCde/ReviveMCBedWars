@@ -1,10 +1,8 @@
 package de.revivemc.bedwars.modules.inventory;
 
 import de.revivemc.bedwars.BedWars;
-import de.revivemc.bedwars.modules.setup.GameStateBuilder;
-import de.revivemc.core.ReviveMCAPI;
+import de.revivemc.bedwars.modules.setup.builder.GameStateBuilder;
 import de.revivemc.core.entitiesutils.items.ItemCreator;
-import de.revivemc.core.entitiesutils.items.ItemHandler;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.Sound;
