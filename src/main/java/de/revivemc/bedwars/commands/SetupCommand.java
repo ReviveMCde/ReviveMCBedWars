@@ -77,14 +77,17 @@ public class SetupCommand implements CommandExecutor {
                     return true;
                 }
 
-                player.sendMessage(prefix + "Du hast den TeamSpawn für das Team" + secondColor + args[4] + " §7auf der Map " + secondColor + args[2] + " §7platziert.");
+                player.sendMessage(prefix + "Du hast den TeamSpawn für das Team " + secondColor + args[4] + " §7auf der Map " + secondColor + args[2] + " §7platziert.");
                 return true;
 
             } else if (args[3].equalsIgnoreCase("setTeamBed")) {
-                if (args.length != 4) {
+                if (args.length != 5) {
                     player.sendMessage("Verwende: 'setup configuremap <MapName> setTeamBed <Team>'");
                     return true;
                 }
+
+                player.sendMessage(prefix + "Du hast das TeamBed für das Team " + secondColor + args[4] + " §7auf der Map " + secondColor + args[2] + " §7platziert.");
+                return true;
             } else if (args[3].equalsIgnoreCase("setShopSpawn")) {
 
             } else if (args[3].equalsIgnoreCase("setBronzeSpawn")) {
