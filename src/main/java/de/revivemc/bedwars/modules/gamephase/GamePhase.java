@@ -21,4 +21,8 @@ public class GamePhase {
 
     }
 
+
+    public enum GamePhaseState {
+        LOBBY, INGAME, END
+    }
 }

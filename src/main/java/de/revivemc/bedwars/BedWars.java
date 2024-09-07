@@ -8,6 +8,8 @@ import de.revivemc.bedwars.listener.player.*;
 import de.revivemc.bedwars.listener.world.WorldCancelListener;
 import de.revivemc.bedwars.modules.database.DatabaseDriver;
 import de.revivemc.bedwars.modules.gamephase.GamePhase;
+import de.revivemc.bedwars.modules.gamephase.GameState;
+import de.revivemc.bedwars.modules.motd.MotdModule;
 import de.revivemc.bedwars.modules.setup.builder.GameStateBuilder;
 import de.revivemc.core.playerutils.ReviveMCPlayer;
 import eu.thesimplecloud.api.service.ServiceState;
@@ -21,6 +23,7 @@ public class BedWars extends JavaPlugin {
     private static BedWars instance;
     private final GamePhase gamePhase = new GamePhase();
     private final GameStateBuilder gameStateBuilder = new GameStateBuilder();
+    private final MotdModule motdModule = new MotdModule();
     private static DatabaseDriver databaseDriver;
 
 
@@ -33,9 +36,8 @@ public class BedWars extends JavaPlugin {
         if (!gameStateBuilder.existsFile()) {
             gameStateBuilder.createGameState("2x1");
         }
-        CloudPlugin.getInstance().thisService().setMOTD("Voting...");
-        CloudPlugin.getInstance().thisService().setState(ServiceState.VISIBLE);
-        CloudPlugin.getInstance().thisService().update();
+        GameState.setState(GameState.LOBBY);
+        motdModule.setMotdVisible();
     }
 
 
@@ -76,5 +78,9 @@ public class BedWars extends JavaPlugin {
 
     public GameStateBuilder getGameStateBuilder() {
         return gameStateBuilder;
+    }
+
+    public MotdModule getMotdModule() {
+        return motdModule;
     }
 }
