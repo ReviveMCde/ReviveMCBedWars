@@ -43,6 +43,7 @@ public class PlayerJoinListener implements Listener {
 
 
         if (GameState.isState(GameState.LOBBY)) {
+            player.sendMessage(prefix + "Current Gamestate: LOBBY");
             for (Player players : Bukkit.getOnlinePlayers()) {
                 players.playSound(players.getLocation(), Sound.LEVEL_UP, 1, 1);
                 players.sendMessage(prefix + "Der Spieler " + reviveMCPlayer.getSecondColor() + player.getName() + " §7hat das Spiel betreten.");
