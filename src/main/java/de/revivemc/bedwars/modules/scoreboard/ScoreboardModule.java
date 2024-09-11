@@ -12,15 +12,12 @@ public class ScoreboardModule {
     public void buildLobbyScoreboard(ReviveMCPlayer reviveMCPlayer) {
         reviveMCPlayer.initialScoreboard();
         final ReviveMCScoreboardBuilder reviveMCScoreboardBuilder = reviveMCPlayer.getCyturaScoreboardBuilder();
-        reviveMCScoreboardBuilder.setLine(10, "§8§m---------", "§8§m---------");
-        reviveMCScoreboardBuilder.setLine(9, " ", " ");
-        reviveMCScoreboardBuilder.setLine(8, " §8§l» ", "§7Rang");
-        reviveMCScoreboardBuilder.setLine(7, " §8» ", reviveMCPlayer.getPermissionGroupColor() + reviveMCPlayer.getPermissionGroup().getName());
+        reviveMCScoreboardBuilder.setLine(7, "§8§m---------", "§8§m---------");
         reviveMCScoreboardBuilder.setLine(6, " ", " ");
-        reviveMCScoreboardBuilder.setLine(5, " §8§l» ", "§7Kills");
+        reviveMCScoreboardBuilder.setLine(5, " §8§l» ", "§7Ranking");
         reviveMCScoreboardBuilder.setLine(4, " §8» ", reviveMCPlayer.getSecondColor() + "0");
         reviveMCScoreboardBuilder.setLine(3, " ", " ");
-        reviveMCScoreboardBuilder.setLine(2, " §8§l» ", "§7Wins");
+        reviveMCScoreboardBuilder.setLine(2, " §8§l» ", "§7Map");
         reviveMCScoreboardBuilder.setLine(1, " §8» ", reviveMCPlayer.getSecondColor() + "0");
         reviveMCScoreboardBuilder.setLine(0, " ", " ");
         MinecraftServer.getServer().postToMainThread(() -> {

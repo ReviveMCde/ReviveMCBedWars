@@ -18,7 +18,10 @@ public class GamePhase {
 
     public void changeGameStateToInGame() {
         this.setGameState("INGAME");
+    }
 
+    public void changeGameStateToEnd() {
+        this.setGameState("END");
     }
 
 
