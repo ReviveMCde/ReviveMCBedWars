@@ -61,6 +61,7 @@ public class BedWars extends JavaPlugin {
         Bukkit.getPluginManager().registerEvents(new PlayerBlockBreakListener(), this);
         Bukkit.getPluginManager().registerEvents(new PlayerBlockPlaceListener(), this);
         Bukkit.getPluginManager().registerEvents(new PlayerQuitListener(), this);
+        Bukkit.getPluginManager().registerEvents(new PlayerInventoryClickListener(), this);
     }
 
 

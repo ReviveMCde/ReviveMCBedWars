@@ -23,7 +23,7 @@ public class InventoryModule {
 
     public void setLobbyInventory() {
         inventory.setItem(0, new ItemCreator(Material.BED).setName("§8» §aTeamauswahl").setAmount(1).setFlags().toItemStack());
-        inventory.setItem(4, new ItemCreator(Material.PAPER).setName("§8» §eMapauswahl").setAmount(1).setFlags().toItemStack());
+        inventory.setItem(4, new ItemCreator(Material.PAPER).setName("§8» §eVoting").setAmount(1).setFlags().toItemStack());
         inventory.setItem(8, new ItemCreator(Material.SLIME_BALL).setName("§8» §cSpiel Verlassen").setAmount(1).setFlags().toItemStack());
     }
 
@@ -55,6 +55,37 @@ public class InventoryModule {
 
         this.player.openInventory(teamInventory);
         this.player.playSound(this.player.getLocation(), Sound.LEVEL_UP, 1, 1);
+    }
+
+
+    public void openVotingInventory(int id) {
+        if (id == 0) {
+            final Inventory votingInventory = Bukkit.createInventory(null, 9*3, "§8» §eVoting");
+
+            setPlaceholder(votingInventory);
+            votingInventory.setItem(11, new ItemCreator("ec6e604bd53d97887595a062b7c512ca4dbbfe48bb4adcef7125d1db103ab7ff").setName("§8» §6Gold Voting").setAmount(1).setFlags().toItemStack());
+            votingInventory.setItem(15, new ItemCreator(Material.PAPER).setName("§8» §aMap Voting").setAmount(1).setFlags().toItemStack());
+
+            this.player.openInventory(votingInventory);
+            this.player.playSound(this.player.getLocation(), Sound.LEVEL_UP, 1, 1);
+        } else if (id == 1) {
+            final Inventory goldVotingInventory = Bukkit.createInventory(null, 9*3, "§8» §6Gold Voting");
+
+            setPlaceholder(goldVotingInventory);
+            goldVotingInventory.setItem(11, new ItemCreator("34d098fe16017ad6962727c5aaf221ac3c4d08ede6f5ca2bd72ce3aec920426b").setName("§8» §aFür Gold Stimmen").setAmount(1).setFlags().toItemStack());
+            goldVotingInventory.setItem(15, new ItemCreator("6953b12a0946b629b4c0889d41fd26ed26fb729d4d514b59727124c37bb70d8d").setName("§8» §cGegen Gold Stimmen").setAmount(1).setFlags().toItemStack());
+
+            this.player.openInventory(goldVotingInventory);
+            this.player.playSound(this.player.getLocation(), Sound.LEVEL_UP, 1, 1);
+
+        } else {
+            final Inventory mapVotingInventory = Bukkit.createInventory(null, 9*3, "§8» §aMap Voting");
+
+            setPlaceholder(mapVotingInventory);
+
+            this.player.openInventory(mapVotingInventory);
+            this.player.playSound(this.player.getLocation(), Sound.LEVEL_UP, 1, 1);
+        }
     }
 
     private void setPlaceholder(final Inventory inventory) {

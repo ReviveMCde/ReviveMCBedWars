@@ -39,13 +39,13 @@ public class PlayerInteractListener implements Listener {
                 return;
             }
 
-            if (player.getItemInHand().getItemMeta().getDisplayName().equalsIgnoreCase("§8» §eMapauswahl")) {
+            if (player.getItemInHand().getItemMeta().getDisplayName().equalsIgnoreCase("§8» §eVoting")) {
+                inventoryModule.openVotingInventory(0);
                 return;
             }
 
             if (player.getItemInHand().getItemMeta().getDisplayName().equalsIgnoreCase("§8» §cSpiel Verlassen")) {
                 iCloudPlayer.sendToLobby();
-                return;
             }
         }
     }
