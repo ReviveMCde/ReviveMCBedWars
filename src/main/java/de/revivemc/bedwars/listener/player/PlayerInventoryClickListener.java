@@ -36,12 +36,6 @@ public class PlayerInventoryClickListener implements Listener {
             final VoteModule voteModule = new VoteModule(player);
 
             if (event.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase("§8» §aFür Gold Stimmen")) {
-                if (voteModule.getGoldVote()) {
-                    event.getView().close();
-                    player.sendMessage(prefix + "§cDu stimmst bereits für Gold in der Runde!");
-                    return;
-                }
-
                 event.getView().close();
                 player.sendMessage(prefix + "§aDu stimmst nun für Gold in der Runde!");
                 voteModule.putGoldVote(true);
@@ -49,15 +43,8 @@ public class PlayerInventoryClickListener implements Listener {
             }
 
             if (event.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase("§8» §cGegen Gold Stimmen")) {
-                if (!voteModule.getGoldVote()) {
-                    event.getView().close();
-                    player.sendMessage(prefix + "§cDu stimmst bereits gegen Gold in der Runde!");
-                    return;
-                }
-
                 event.getView().close();
                 player.sendMessage(prefix + "§cDu stimmst nun gegen Gold in der Runde!");
-                voteModule.putGoldVote(false);
             }
         }
     }

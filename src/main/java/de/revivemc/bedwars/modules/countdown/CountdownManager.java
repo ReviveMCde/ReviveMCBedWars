@@ -4,6 +4,10 @@ import de.revivemc.bedwars.BedWars;
 import de.revivemc.bedwars.modules.gamephase.GameModule;
 import de.revivemc.bedwars.modules.gamephase.GamePhase;
 import de.revivemc.bedwars.modules.gamephase.GameState;
+import de.revivemc.bedwars.modules.vote.VoteModule;
+import de.revivemc.core.ReviveMCAPI;
+import de.revivemc.core.playerutils.ReviveMCPlayer;
+import de.revivemc.core.playerutils.scoreboard.ReviveMCScoreboardBuilder;
 import eu.thesimplecloud.api.service.ServiceState;
 import eu.thesimplecloud.plugin.startup.CloudPlugin;
 import org.bukkit.Bukkit;
@@ -60,8 +64,21 @@ public class CountdownManager {
                 }
 
                 if (countdown.countdown == 15) {
+                    final VoteModule voteModule = new VoteModule(player);
                     Bukkit.broadcastMessage(prefix + "Das Spiel startet in 15 Sekunden.");
                     Bukkit.broadcastMessage(prefix + "Votingphase abgeschlossen.");
+                    Bukkit.getOnlinePlayers().forEach(players -> {
+                        players.getInventory().clear(4);
+                        final ReviveMCPlayer reviveMCPlayer = ReviveMCAPI.getInstance().getCyturaPlayerManager().getPlayers().get(player.getUniqueId());
+                        if (voteModule.goldVoteEndPool()) {
+                            reviveMCPlayer.getCyturaScoreboardBuilder().updateBoard(1, " §8» ", "§a✔");
+                            players.sendMessage(prefix + "Es wird mit Gold in der Runde gespielt.");
+                        } else {
+                            reviveMCPlayer.getCyturaScoreboardBuilder().updateBoard(1, " §8» ", "§c✘");
+                            players.sendMessage(prefix + "Es wird nicht mit Gold in der Runde gespielt.");
+                        }
+                    });
+
                     CloudPlugin.getInstance().thisService().setMOTD("MAPNAME");
                     Bukkit.getOnlinePlayers().forEach(players -> {
                         players.playSound(players.getLocation(), Sound.NOTE_BASS, 1, 1);
